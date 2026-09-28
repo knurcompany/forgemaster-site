@@ -1,0 +1,722 @@
+/* ============================================================
+   ForgeMaster — стилі промо-сторінки
+
+   Палітра не вигадана: кольори взято з project/scripts/GameData.gd,
+   де вони записані як Color(r, g, b) для руд і зливків. Тому сайт
+   і гра світяться однаково.
+
+   Сторінка навмисно тільки темна. Гра — про вугілля й розжарений
+   метал; світла тема тут була б чужою, а не «доступнішою».
+   ============================================================ */
+
+:root {
+  /* — метали з гри — */
+  --copper:    #CC7340;  /* мідна руда      Color(0.80, 0.45, 0.25) */
+  --iron:      #A6ABB3;  /* залізна руда    Color(0.65, 0.67, 0.70) */
+  --gold:      #EBBF40;  /* золота руда     Color(0.92, 0.75, 0.25) */
+  --diamond:   #8CD9F2;  /* алмаз           Color(0.55, 0.85, 0.95) */
+  --aurite:    #E0943D;  /* ауритовий злиток Color(0.88, 0.58, 0.24) */
+
+  /* — поверхні — */
+  --bg:        #14110E;
+  --bg-deep:   #0D0B09;
+  --surface:   #1C1815;
+  --surface-2: #241E19;
+  --border:    #352C23;
+
+  /* — текст — */
+  --fg:        #EDE6DC;
+  --fg-muted:  #A39687;  /* 6.6:1 на --bg */
+  --fg-dim:    #7C7264;  /* тільки для великого тексту й підписів */
+
+  /* — дія — */
+  --hot:       #F0862B;
+  /* Темний край градієнта кнопки. Спершу тут було #C4521B — гарніше,
+     але текст на ньому давав 4.11:1 при нормі 4.5. Освітлено рівно
+     настільки, щоб пройти AA (4.80:1), і не більше. */
+  --hot-deep:  #D15E24;
+  --on-hot:    #16100A;
+  --ring:      var(--gold);
+
+  /* — шрифти — */
+  --font-head: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* — простір (spacious: лендінг, не дашборд) — */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-6: 6rem;
+
+  --radius:    14px;
+  --radius-lg: 22px;
+  --wrap:      1180px;
+
+  color-scheme: dark;
+}
+
+/* ── База ──────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1rem/1.65 var(--font-body);
+  overflow-x: hidden;           /* сторінка ніколи не їде вбік */
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;           /* без сиротинських рядків у заголовках */
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--aurite); }
+
+ul, ol, dl, dd { margin: 0; padding: 0; }
+li { list-style: none; }
+
+.wrap {
+  width: min(100% - 2.5rem, var(--wrap));
+  margin-inline: auto;
+}
+
+/* Фокус видно завжди — прибирати обведення не можна */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: var(--s-2) var(--s-3);
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 700;
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ── Кнопки ────────────────────────────────────────────────── */
+
+.btn {
+  --btn-bg: linear-gradient(160deg, var(--hot), var(--hot-deep));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 44px;             /* дотик: не менше 44×44 */
+  padding: 0.75rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--on-hot);
+  font: 700 0.95rem/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  box-shadow: 0 6px 18px -8px rgba(240, 134, 43, 0.7);
+}
+.btn:hover {
+  color: var(--on-hot);
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 26px -10px rgba(240, 134, 43, 0.85);
+}
+.btn:active { transform: translateY(0); }
+
+.btn img { filter: brightness(0) saturate(100%); opacity: 0.85; }
+
+.btn-lg { min-height: 52px; padding: 0.95rem 1.9rem; font-size: 1.02rem; }
+.btn-sm { min-height: 40px; padding: 0.6rem 1.1rem; font-size: 0.88rem; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  box-shadow: none;
+}
+.btn-ghost:hover {
+  color: var(--fg);
+  background: var(--surface);
+  border-color: var(--copper);
+  filter: none;
+  /* Обов'язково: .btn:hover має вищу вагу за .btn-ghost, тож без
+     цього рядка під прозорою кнопкою при наведенні спалахувала
+     помаранчева тінь від суцільної. */
+  box-shadow: none;
+}
+
+/* ── Шапка ─────────────────────────────────────────────────── */
+
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20, 17, 14, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding-top: env(safe-area-inset-top);
+}
+
+.head-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 64px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--fg);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  margin-right: auto;
+}
+.brand:hover { color: var(--gold); }
+
+.head-nav { display: none; gap: var(--s-3); }
+.head-nav a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+.head-nav a:hover { color: var(--fg); }
+
+@media (min-width: 860px) {
+  .head-nav { display: flex; }
+}
+
+/* ── Герой ─────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  padding: var(--s-5) 0 var(--s-6);
+  overflow: hidden;
+}
+
+/* Сяйво горна за текстом */
+.hero-glow {
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 620px;
+  background:
+    radial-gradient(45% 55% at 22% 40%, rgba(240, 134, 43, 0.22), transparent 70%),
+    radial-gradient(40% 50% at 78% 25%, rgba(204, 115, 64, 0.15), transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  gap: var(--s-5);
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: var(--s-3);
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  margin-bottom: var(--s-3);
+}
+
+.hero h1 .hot {
+  background: linear-gradient(100deg, var(--hot), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lede {
+  font-size: clamp(1.05rem, 2.4vw, 1.22rem);
+  color: var(--fg-muted);
+  max-width: 46ch;
+  margin-bottom: var(--s-4);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-bottom: var(--s-4);
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+}
+.hero-stats dt {
+  color: var(--fg-dim);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.hero-stats dd {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-top: 0.15rem;
+}
+
+.hero-device { display: flex; justify-content: center; }
+
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.05fr 0.95fr; }
+  .hero { padding: var(--s-6) 0; }
+}
+
+/* ── Телефон ───────────────────────────────────────────────── */
+
+.phone {
+  position: relative;
+  width: min(300px, 78vw);
+  aspect-ratio: 9 / 19.5;
+  padding: 10px;
+  border-radius: 34px;
+  background: linear-gradient(160deg, #3B322A, #17130F 60%);
+  box-shadow:
+    0 0 0 1px rgba(235, 191, 64, 0.12),
+    0 30px 60px -25px rgba(0, 0, 0, 0.9),
+    0 0 90px -30px rgba(240, 134, 43, 0.45);
+}
+
+.phone-sm { width: min(240px, 62vw); }
+
+.phone-screen {
+  position: relative;
+  height: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Поки скріншота немає — місце не порожнє й не поламане.
+   Клас навішує app.js, коли картинка не завантажилась. */
+.phone-screen.is-empty::after {
+  content: attr(data-empty);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: var(--s-3);
+  text-align: center;
+  background:
+    radial-gradient(60% 40% at 50% 28%, rgba(240, 134, 43, 0.18), transparent 70%),
+    repeating-linear-gradient(45deg, #1A1512 0 12px, #171310 12px 24px);
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ── Секції ────────────────────────────────────────────────── */
+
+.section { padding: var(--s-6) 0; }
+.section-alt {
+  background: var(--bg-deep);
+  border-block: 1px solid var(--border);
+}
+
+.sec-title {
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  margin-bottom: var(--s-2);
+}
+
+.sec-lede {
+  color: var(--fg-muted);
+  font-size: 1.05rem;
+  max-width: 58ch;
+  margin-bottom: var(--s-5);
+}
+
+/* ── Ігровий цикл ──────────────────────────────────────────── */
+
+.loop {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.loop-step {
+  position: relative;
+  padding: var(--s-4) var(--s-3) var(--s-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.loop-step:hover {
+  border-color: var(--copper);
+  transform: translateY(-3px);
+}
+
+.loop-num {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  font-family: var(--font-head);
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+}
+
+.loop-step img { margin-bottom: var(--s-2); }
+
+.loop-step h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.loop-step p {
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 720px) { .loop { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .loop { grid-template-columns: repeat(4, 1fr); } }
+
+/* ── Карусель екранів ──────────────────────────────────────── */
+
+.shots-viewport { overflow: hidden; }
+
+.shots-track {
+  display: flex;
+  gap: var(--s-3);
+  /* Потрібне, щоб offsetLeft слайда рахувався від самого треку:
+     без нього app.js міряв би від body і кнопки гортали б мимо. */
+  position: relative;
+  /* На вузькому — звичайний свайп із прилипанням.
+     На широкому JS перемикає на трансформ. */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: var(--s-2);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.shots-track::-webkit-scrollbar { display: none; }
+
+.shot {
+  flex: 0 0 min(280px, 82vw);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  text-align: center;
+}
+
+.shot-cap h3 { font-size: 1.2rem; margin-bottom: 0.35rem; }
+.shot-cap p { color: var(--fg-muted); font-size: 0.92rem; max-width: 34ch; }
+
+.shots-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+}
+
+.nav-btn {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+.nav-btn:hover { border-color: var(--copper); background: var(--surface-2); }
+.nav-btn img { opacity: 0.8; }
+.nav-btn .flip { transform: rotate(180deg); }
+
+.dots { display: flex; gap: 0.55rem; }
+
+.dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+  /* ціль дотику розширена, а вигляд лишився дрібним */
+  position: relative;
+}
+.dot::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
+}
+.dot:hover { background: var(--fg-dim); }
+.dot[aria-selected='true'] {
+  background: var(--hot);
+  transform: scale(1.25);
+}
+
+@media (min-width: 900px) {
+  .shot { flex-basis: 260px; }
+  /* `safe` тут обов'язкове. Звичайне center у контейнері з
+     overflow-x обрізає перший слайд, щойно вміст перестає
+     вміщатися, і доскролити до нього вже не можна. */
+  .shots-track { justify-content: safe center; }
+}
+
+/* ── Зброя ─────────────────────────────────────────────────── */
+
+.weapons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.w-tag {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;          /* назва не ламається посеред слова */
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.w-tag:hover { color: var(--fg); border-color: var(--iron); }
+
+/* Українські й міфічні — золотом, реманент — притишено */
+.w-rare {
+  color: var(--gold);
+  border-color: rgba(235, 191, 64, 0.35);
+  background: rgba(235, 191, 64, 0.06);
+}
+.w-rare:hover { border-color: var(--gold); color: var(--gold); }
+
+.w-plain { color: var(--fg-dim); }
+
+.weapons-note {
+  margin-top: var(--s-3);
+  color: var(--fg-dim);
+  font-size: 0.95rem;
+  max-width: 52ch;
+}
+
+/* ── Картки деталей ────────────────────────────────────────── */
+
+.cards {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.card {
+  padding: var(--s-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.card:hover { border-color: var(--copper); transform: translateY(-3px); }
+.card img { margin-bottom: var(--s-2); }
+.card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.card p { color: var(--fg-muted); font-size: 0.93rem; }
+
+@media (min-width: 640px)  { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+
+/* ── Музика ────────────────────────────────────────────────── */
+
+.sound-inner {
+  display: grid;
+  gap: var(--s-4);
+  align-items: center;
+}
+
+.sound-note {
+  color: var(--fg-dim);
+  font-size: 0.93rem;
+  max-width: 50ch;
+  margin-top: var(--s-3);
+}
+
+.sound-viz {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  height: 130px;
+}
+
+.sound-viz span {
+  width: 10px;
+  border-radius: 999px 999px 4px 4px;
+  background: linear-gradient(180deg, var(--hot), var(--hot-deep));
+  animation: eq 1.9s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+/* Дванадцять смуг — дванадцять треків. Висота й затримка різні,
+   щоб не читалось як механічна хвиля. */
+.sound-viz span:nth-child(1)  { height: 34%; animation-delay: -0.1s; }
+.sound-viz span:nth-child(2)  { height: 62%; animation-delay: -0.7s; }
+.sound-viz span:nth-child(3)  { height: 45%; animation-delay: -1.3s; }
+.sound-viz span:nth-child(4)  { height: 80%; animation-delay: -0.4s; }
+.sound-viz span:nth-child(5)  { height: 55%; animation-delay: -1.6s; }
+.sound-viz span:nth-child(6)  { height: 95%; animation-delay: -0.9s; }
+.sound-viz span:nth-child(7)  { height: 70%; animation-delay: -0.2s; }
+.sound-viz span:nth-child(8)  { height: 48%; animation-delay: -1.1s; }
+.sound-viz span:nth-child(9)  { height: 86%; animation-delay: -0.6s; }
+.sound-viz span:nth-child(10) { height: 40%; animation-delay: -1.4s; }
+.sound-viz span:nth-child(11) { height: 66%; animation-delay: -0.3s; }
+.sound-viz span:nth-child(12) { height: 30%; animation-delay: -1.8s; }
+
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.45); }
+  50%      { transform: scaleY(1); }
+}
+
+@media (min-width: 900px) {
+  .sound-inner { grid-template-columns: 1.2fr 0.8fr; }
+  .sound-viz { height: 200px; }
+  .sound-viz span { width: 14px; }
+}
+
+/* ── Завантаження ──────────────────────────────────────────── */
+
+.get { text-align: center; }
+
+.get-inner {
+  max-width: 640px;
+  padding: var(--s-5) var(--s-3);
+  margin-inline: auto;
+  background:
+    radial-gradient(70% 100% at 50% 0%, rgba(240, 134, 43, 0.14), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.get-inner img { margin: 0 auto var(--s-3); }
+.get h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin-bottom: var(--s-2); }
+.get p { color: var(--fg-muted); margin-bottom: var(--s-4); }
+
+.get-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  justify-content: center;
+  margin-bottom: var(--s-3);
+}
+
+.get-fine {
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+  margin: 0;
+  max-width: 46ch;
+  margin-inline: auto;
+}
+
+/* ── Підвал ────────────────────────────────────────────────── */
+
+.site-foot {
+  border-top: 1px solid var(--border);
+  padding: var(--s-4) 0;
+  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
+  background: var(--bg-deep);
+}
+
+.foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  align-items: center;
+  justify-content: space-between;
+  color: var(--fg-dim);
+  font-size: 0.88rem;
+}
+.foot-inner strong { color: var(--fg-muted); }
+.foot-inner nav { display: flex; gap: var(--s-3); }
+
+/* ── Поява при прокрутці ───────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 450ms ease, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* Сходинка між сусідніми картками — хвиля, а не спалах усього разом */
+.loop-step:nth-child(2), .card:nth-child(2) { transition-delay: 70ms; }
+.loop-step:nth-child(3), .card:nth-child(3) { transition-delay: 140ms; }
+.loop-step:nth-child(4), .card:nth-child(4) { transition-delay: 210ms; }
+
+/* ── Менше руху ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Показуємо кінцевий стан, а не приховане нічого */
+  .reveal { opacity: 1; transform: none; }
+  .sound-viz span { animation: none; transform: scaleY(0.8); }
+}

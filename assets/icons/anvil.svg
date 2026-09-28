@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="anvSteel" x1="0.1" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#c8ced8"/>
+      <stop offset="0.3" stop-color="#98a0ab"/>
+      <stop offset="0.75" stop-color="#5a616b"/>
+      <stop offset="1" stop-color="#343a42"/>
+    </linearGradient>
+  </defs>
+  <path d="M4 24c6-4 12-6 19-6h27l10 6-10 6H23c-8 0-15-2-19-6z" fill="url(#anvSteel)"/>
+  <path d="M4 24c6-4 12-6 19-6h27l10 6H23c-8 0-15 0-19 0z" fill="#d5dae2" opacity="0.65"/>
+  <path d="M24 30h16l-3 12H27z" fill="#4d545d"/>
+  <path d="M24 30h5l-2 12h-3z" fill="#7e858f" opacity="0.6"/>
+  <path d="M17 42h30c3 0 5 2 5 5v5H12v-5c0-3 2-5 5-5z" fill="#646b75"/>
+  <path d="M17 42h8v10H12v-5c0-3 2-5 5-5z" fill="#8f96a0" opacity="0.55"/>
+</svg>

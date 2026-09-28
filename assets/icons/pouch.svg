@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="leather" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#d09a58"/>
+      <stop offset="0.55" stop-color="#a06f3e"/>
+      <stop offset="1" stop-color="#5f3f22"/>
+    </radialGradient>
+    <linearGradient id="cordG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b08a55"/>
+      <stop offset="1" stop-color="#6d5230"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 22c12 0 24 13 24 25 0 9-11 14-24 14S8 56 8 47c0-12 12-25 24-25z" fill="url(#leather)"/>
+  <path d="M22 30c-6 5-10 12-10 17 0 5 4 9 10 11-9-1-14-6-14-11 0-6 5-12 14-17z" fill="#c08d52" opacity="0.35"/>
+  <path d="M25 13h14l-2 10H27z" fill="#8a6238"/>
+  <rect x="21" y="8" width="22" height="7" rx="3.5" fill="url(#cordG)"/>
+  <rect x="22" y="9" width="20" height="2.2" rx="1.1" fill="#cba86e" opacity="0.6"/>
+</svg>

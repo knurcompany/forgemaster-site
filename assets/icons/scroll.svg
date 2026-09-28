@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="parch" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9b48a"/>
+      <stop offset="0.3" stop-color="#f2e3bd"/>
+      <stop offset="0.8" stop-color="#dcc79b"/>
+      <stop offset="1" stop-color="#a38e69"/>
+    </linearGradient>
+    <linearGradient id="rollG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a58a5f"/>
+      <stop offset="1" stop-color="#6b573a"/>
+    </linearGradient>
+  </defs>
+  <path d="M14 12h36v40H14z" fill="url(#parch)"/>
+  <ellipse cx="14" cy="12" rx="8" ry="5" fill="url(#rollG)"/>
+  <ellipse cx="14" cy="12" rx="8" ry="5" fill="#c4a878" opacity="0.5"/>
+  <ellipse cx="50" cy="52" rx="8" ry="5" fill="url(#rollG)"/>
+  <g fill="#5a4630" opacity="0.75">
+    <rect x="21" y="21" width="24" height="3.4" rx="1.7"/>
+    <rect x="21" y="30" width="24" height="3.4" rx="1.7"/>
+    <rect x="21" y="39" width="15" height="3.4" rx="1.7"/>
+  </g>
+</svg>

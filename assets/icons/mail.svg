@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="mailG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6d9bd"/>
+      <stop offset="1" stop-color="#a8956f"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="16" width="52" height="34" rx="4" fill="url(#mailG)"/>
+  <path d="M6 20l26 18 26-18v-2a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2z" fill="#c9b78e"/>
+  <path d="M6 18l26 18 26-18-26 16z" fill="#8d7d5c"/>
+  <path d="M8 48l18-14 6 4 6-4 18 14z" fill="#d8c9a4" opacity="0.55"/>
+</svg>

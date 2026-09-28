@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Політика безпеки вмісту. Дублюється у _headers та .htaccess:
+     мета-тег рятує, коли сайт відкривають з файлу або з хостингу
+     без власних заголовків, а заголовок сервера має перевагу. -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data:;
+  connect-src 'self';
+  form-action 'none';
+  frame-ancestors 'none';
+  base-uri 'none';
+  object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title>ForgeMaster — симулятор середньовічного коваля</title>
+<meta name="description" content="Добувай руду, плав зливки, куй зброю на замовлення й торгуй із гостями. 50 видів зброї, від кинджала до цвайгендера. Гра для Android.">
+<meta name="theme-color" content="#14110E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="ForgeMaster — симулятор середньовічного коваля">
+<meta property="og:description" content="Руда, горно, ковадло. 50 видів зброї на замовлення — від кинджала до цвайгендера.">
+<meta property="og:image" content="assets/shots/og-cover.png">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/icons/anvil.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@700;900&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Перейти до вмісту</a>
+
+<header class="site-head" id="top">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top">
+      <img src="assets/icons/anvil.svg" alt="" width="32" height="32" aria-hidden="true">
+      <span class="brand-name">ForgeMaster</span>
+    </a>
+
+    <nav class="head-nav" aria-label="Основне меню">
+      <a href="#loop">Як грається</a>
+      <a href="#shots">Екрани</a>
+      <a href="#weapons">Зброя</a>
+      <a href="#sound">Музика</a>
+    </nav>
+
+    <a class="btn btn-sm" href="#get">Завантажити</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Герой ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <img src="assets/icons/flame.svg" alt="" width="18" height="18" aria-hidden="true">
+          Android · українською · без реклами
+        </p>
+
+        <h1>Розжар, удар,<br><span class="hot">і ще раз удар.</span></h1>
+
+        <p class="lede">
+          Симулятор середньовічного коваля. Добуваєш руду, плавиш зливки,
+          куєш зброю на замовлення й торгуєш із гостями — від гоблінів-шахтарів
+          до лицарів.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-lg" href="#get">
+            <img src="assets/icons/hammer.svg" alt="" width="20" height="20" aria-hidden="true">
+            Завантажити APK
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#loop">Як це працює</a>
+        </div>
+
+        <dl class="hero-stats">
+          <div><dt>Видів зброї</dt><dd>50</dd></div>
+          <div><dt>Локацій</dt><dd>6</dd></div>
+          <div><dt>Музики</dt><dd>31 хв</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-device">
+        <div class="phone">
+          <div class="phone-screen">
+            <img data-shot="forge" src="assets/shots/forge.png" alt="Екран кузні: заготовка на ковадлі, поруч горно" width="360" height="800" loading="eager" decoding="async">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Ігровий цикл ──────────────────────────────────────────── -->
+  <section class="section" id="loop">
+    <div class="wrap">
+      <h2 class="sec-title">Один оберт кузні</h2>
+      <p class="sec-lede">
+        Чотири кроки, і все повертається на початок — тільки замовлення дорожчі,
+        а піч гарячіша.
+      </p>
+
+      <ol class="loop">
+        <li class="loop-step">
+          <span class="loop-num" aria-hidden="true">1</span>
+          <img src="assets/icons/pickaxe.svg" alt="" width="40" height="40" aria-hidden="true">
+          <h3>Добудь руду</h3>
+          <p>
+            Старий кар'єр, Залізна шахта, Кристальна печера — шість локацій,
+            і в кожній своя порода. Мідь, залізо, золото, алмаз.
+          </p>
+        </li>
+        <li class="loop-step">
+          <span class="loop-num" aria-hidden="true">2</span>
+          <img src="assets/icons/furnace.svg" alt="" width="40" height="40" aria-hidden="true">
+          <h3>Розплав у злиток</h3>
+          <p>
+            Мідний тігель тягне повільно, діамантовий — швидше. Далі відкривається
+            оріхалк і аурит, які просто так не даються.
+          </p>
+        </li>
+        <li class="loop-step">
+          <span class="loop-num" aria-hidden="true">3</span>
+          <img src="assets/icons/anvil.svg" alt="" width="40" height="40" aria-hidden="true">
+          <h3>Викуй на ковадлі</h3>
+          <p>
+            Тут гра стає грою. Влучив по розпеченому — форма набирається,
+            промазав — кромка йде наперекос. Оцінка від «Брак» до найкращої.
+          </p>
+        </li>
+        <li class="loop-step">
+          <span class="loop-num" aria-hidden="true">4</span>
+          <img src="assets/icons/pouch.svg" alt="" width="40" height="40" aria-hidden="true">
+          <h3>Здай і продай</h3>
+          <p>
+            Гість забирає замовлення, платить за якість. Решту виставляєш
+            у крамницю — там ціну диктуєш уже ти.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── Скріншоти ─────────────────────────────────────────────── -->
+  <section class="section section-alt" id="shots">
+    <div class="wrap">
+      <h2 class="sec-title">Чотири екрани</h2>
+      <p class="sec-lede">Уся гра поміщається в чотири вкладки. Нічого зайвого.</p>
+
+      <div class="shots" data-carousel>
+        <div class="shots-viewport">
+          <ul class="shots-track" data-track>
+
+            <li class="shot" data-slide id="slide-forge" role="group" aria-roledescription="слайд" aria-label="1 з 4: Кузня">
+              <div class="phone phone-sm">
+                <div class="phone-screen">
+                  <img data-shot="forge" src="assets/shots/forge.png" alt="Кузня: розпечена заготовка на ковадлі, молот занесений для удару" width="360" height="800" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <div class="shot-cap">
+                <h3>Кузня</h3>
+                <p>Горно, ковадло, молот. Тут заготовка стає виробом — або брухтом.</p>
+              </div>
+            </li>
+
+            <li class="shot" data-slide id="slide-orders" role="group" aria-roledescription="слайд" aria-label="2 з 4: Замовлення">
+              <div class="phone phone-sm">
+                <div class="phone-screen">
+                  <img data-shot="orders" src="assets/shots/orders.png" alt="Замовлення: картки гостей із запитами на зброю та строком виконання" width="360" height="800" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <div class="shot-cap">
+                <h3>Замовлення</h3>
+                <p>Гоблін-шахтар хоче кайло, лицар — цвайгендер. У кожного свій строк і своя ціна.</p>
+              </div>
+            </li>
+
+            <li class="shot" data-slide id="slide-res" role="group" aria-roledescription="слайд" aria-label="3 з 4: Ресурси">
+              <div class="phone phone-sm">
+                <div class="phone-screen">
+                  <img data-shot="resources" src="assets/shots/resources.png" alt="Ресурси: шахтні локації, запаси руди й зливків, помічник Джо" width="360" height="800" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <div class="shot-cap">
+                <h3>Ресурси</h3>
+                <p>Локації, запаси, плавильня. І Джо, який кліпає й гмикає, коли його тицьнути.</p>
+              </div>
+            </li>
+
+            <li class="shot" data-slide id="slide-shop" role="group" aria-roledescription="слайд" aria-label="4 з 4: Крамниця">
+              <div class="phone phone-sm">
+                <div class="phone-screen">
+                  <img data-shot="shop" src="assets/shots/shop.png" alt="Крамниця: полиці з викуваною зброєю, ціни та покупці" width="360" height="800" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <div class="shot-cap">
+                <h3>Крамниця</h3>
+                <p>Що не пішло на замовлення — на прилавок. Гості приходять і без запиту.</p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="shots-ctrl">
+          <button class="nav-btn" type="button" data-prev aria-label="Попередній екран">
+            <img src="assets/icons/chevron.svg" alt="" width="20" height="20" aria-hidden="true" class="flip">
+          </button>
+          <div class="dots" role="tablist" aria-label="Вибір екрана" data-dots></div>
+          <button class="nav-btn" type="button" data-next aria-label="Наступний екран">
+            <img src="assets/icons/chevron.svg" alt="" width="20" height="20" aria-hidden="true">
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Зброя ─────────────────────────────────────────────────── -->
+  <section class="section" id="weapons">
+    <div class="wrap">
+      <h2 class="sec-title">П'ятдесят виробів</h2>
+      <p class="sec-lede">
+        Кожен кується окремо, зі своїми стадіями й своїм характером металу.
+        Поряд із класикою — речі, яких у таких іграх зазвичай немає.
+      </p>
+
+      <ul class="weapons" data-weapons>
+        <li class="w-tag w-rare">Гетьманська шабля</li>
+        <li class="w-tag w-rare">Пернач</li>
+        <li class="w-tag w-rare">Топірець</li>
+        <li class="w-tag w-rare">Двозуб</li>
+        <li class="w-tag">Цвайгендер</li>
+        <li class="w-tag">Фламберг</li>
+        <li class="w-tag">Клеймор</li>
+        <li class="w-tag">Бердиш</li>
+        <li class="w-tag">Алебарда</li>
+        <li class="w-tag">Есток</li>
+        <li class="w-tag">Фальшіон</li>
+        <li class="w-tag">Глефа</li>
+        <li class="w-tag">Рапіра</li>
+        <li class="w-tag">Кинджал</li>
+        <li class="w-tag">Катана</li>
+        <li class="w-tag">Шабля</li>
+        <li class="w-tag">Келеп</li>
+        <li class="w-tag">Булава</li>
+        <li class="w-tag">Тризуб</li>
+        <li class="w-tag">Спис</li>
+        <li class="w-tag">Коса Мари</li>
+        <li class="w-tag">Рунний тесак</li>
+        <li class="w-tag">Крилатий меч</li>
+        <li class="w-tag">Семигілля</li>
+        <li class="w-tag">М'єльнір</li>
+        <li class="w-tag w-plain">Підкова</li>
+        <li class="w-tag w-plain">Серп</li>
+        <li class="w-tag w-plain">Коса</li>
+        <li class="w-tag w-plain">Вила</li>
+        <li class="w-tag w-plain">Мотика</li>
+        <li class="w-tag w-plain">Ножиці</li>
+        <li class="w-tag w-plain">Пила</li>
+      </ul>
+
+      <p class="weapons-note">
+        …і ще вісімнадцять. Селянський реманент кується так само чесно, як меч —
+        просто платять за нього менше.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Деталі ────────────────────────────────────────────────── -->
+  <section class="section section-alt" id="detail">
+    <div class="wrap">
+      <h2 class="sec-title">Дрібниці, на які пішов час</h2>
+
+      <div class="cards">
+        <article class="card">
+          <img src="assets/icons/gear.svg" alt="" width="36" height="36" aria-hidden="true">
+          <h3>Кожне жало окремо</h3>
+          <p>
+            Зубці, кромка, заклепки — не одна текстура на всю зброю, а окремі
+            етапи. Видно, куди сів молот.
+          </p>
+        </article>
+
+        <article class="card">
+          <img src="assets/icons/scroll.svg" alt="" width="36" height="36" aria-hidden="true">
+          <h3>Гості з характером</h3>
+          <p>
+            Джо кліпає, позирає вбік і озивається на дотик. Захар із третього
+            рівня приносить кота — і кіт лишається жити в кузні.
+          </p>
+        </article>
+
+        <article class="card">
+          <img src="assets/icons/ingot_gold.svg" alt="" width="36" height="36" aria-hidden="true">
+          <h3>Метал, який треба відкрити</h3>
+          <p>
+            Мідь і залізо — з першого дня. Оріхалк і аурит доводиться
+            заслужити разом із кращою піччю.
+          </p>
+        </article>
+
+        <article class="card">
+          <img src="assets/icons/trophy.svg" alt="" width="36" height="36" aria-hidden="true">
+          <h3>Оцінка за роботу</h3>
+          <p>
+            Від «Браку» до найвищого ґатунку. Ціна множиться на якість,
+            тож халтура б'є по гаманцю одразу.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Музика ────────────────────────────────────────────────── -->
+  <section class="section" id="sound">
+    <div class="wrap sound-inner">
+      <div class="sound-copy">
+        <h2 class="sec-title">Не одна тема по колу</h2>
+        <p class="sec-lede">
+          Дванадцять треків на тридцять одну хвилину, зведені як альбом:
+          тихий початок, підйом до середини, спад назад у тишу. Останній трек
+          стикується з першим, бо плейлист крутиться по колу.
+        </p>
+        <p class="sound-note">
+          Гучність вирівняна — в оригіналі треки розходились на 14 децибелів.
+          Усе під ліцензією CC0: ні атрибуції, ні обмежень.
+        </p>
+      </div>
+      <div class="sound-viz" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Завантаження ──────────────────────────────────────────── -->
+  <section class="section get" id="get">
+    <div class="wrap get-inner">
+      <img src="assets/icons/anvil.svg" alt="" width="56" height="56" aria-hidden="true">
+      <h2>Кузня чекає</h2>
+      <p>
+        Android 7.0 і новіші. Близько 90 МБ. Без реклами, без покупок,
+        без інтернету після встановлення.
+      </p>
+
+      <div class="get-cta">
+        <a class="btn btn-lg" href="https://github.com/knurcompany/ForgeMaster/releases/latest" rel="noopener noreferrer">
+          <img src="assets/icons/hammer.svg" alt="" width="20" height="20" aria-hidden="true">
+          Завантажити APK
+        </a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/knurcompany/ForgeMaster" rel="noopener noreferrer">
+          Вихідний код
+        </a>
+      </div>
+
+      <p class="get-fine">
+        APK ставиться повз Google Play, тож Android спитає дозвіл на
+        встановлення з невідомого джерела — це нормально для збірок поза магазином.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <p>
+      <strong>ForgeMaster</strong> — зроблено на Godot 4.7.
+      Музика від RandomMind і cynicmusic, CC0.
+    </p>
+    <nav aria-label="Додаткові посилання">
+      <a href="https://github.com/knurcompany/ForgeMaster" rel="noopener noreferrer">GitHub</a>
+      <a href="privacy.html">Приватність</a>
+      <a href="#top">Нагору</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="dgBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5f666f"/>
+      <stop offset="0.35" stop-color="#d3d8e0"/>
+      <stop offset="0.65" stop-color="#98a0ab"/>
+      <stop offset="1" stop-color="#474d56"/>
+    </linearGradient>
+    <linearGradient id="dgGuard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c8964a"/>
+      <stop offset="1" stop-color="#7a5218"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 6l6 8v22H26V14z" fill="url(#dgBlade)"/>
+  <path d="M32 6l6 8v22h-3V12z" fill="#3f454d" opacity="0.5"/>
+  <rect x="19" y="36" width="26" height="6" rx="2" fill="url(#dgGuard)"/>
+  <rect x="29" y="42" width="6" height="14" fill="#6b4a2a"/>
+  <circle cx="32" cy="57" r="4" fill="url(#dgGuard)"/>
+</svg>

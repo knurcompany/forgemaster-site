@@ -1,0 +1,70 @@
+/* Сторінки для магазинів: політика приватності й таке інше.
+   Окремим файлом, а не тегом <style>, бо CSP лендінгу дозволяє лише
+   style-src 'self' — inline-стиль браузер просто викине. Змінні теми
+   беруться зі styles.css, який підключається першим. */
+
+.legal {
+  padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.legal-inner {
+  max-width: 44rem;   /* ~75 знаків у рядку: довше око губить початок рядка */
+}
+
+.legal h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.legal .legal-date {
+  color: var(--fg-dim);
+  font-size: 0.9rem;
+  margin: 0 0 2.5rem;
+}
+
+.legal h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+  line-height: 1.25;
+  margin: 2.5rem 0 0.75rem;
+  color: var(--gold);
+}
+
+.legal p,
+.legal li {
+  color: var(--fg-muted);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.legal strong {
+  color: var(--fg);
+}
+
+.legal ul {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.legal li::marker {
+  color: var(--copper);
+}
+
+.legal a {
+  color: var(--gold);
+}
+
+/* Межа між українською й англійською половинами. Не просто лінія:
+   англійський текст — той самий документ, а не наступний розділ, і
+   око має це побачити, не читаючи. */
+.legal-lang-break {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 4rem 0 0;
+}
+
+.legal-lang-break + h1 {
+  margin-top: 3rem;
+}

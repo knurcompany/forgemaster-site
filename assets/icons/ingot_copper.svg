@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="cuTop" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#fbc78e"/>
+      <stop offset="0.55" stop-color="#dd914f"/>
+      <stop offset="1" stop-color="#9e5626"/>
+    </linearGradient>
+    <linearGradient id="cuFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cd7a3b"/>
+      <stop offset="1" stop-color="#77391a"/>
+    </linearGradient>
+  </defs>
+  <path d="M9 41h38l2 13H7z" fill="url(#cuFront)"/>
+  <path d="M9 41h38l8-9H17z" fill="url(#cuTop)"/>
+  <path d="M23 32h26l-2 3H21z" fill="#43200e" opacity="0.32"/>
+  <path d="M25 22h22l2 10H23z" fill="url(#cuFront)"/>
+  <path d="M25 22h22l6-8H31z" fill="url(#cuTop)"/>
+  <path d="M13 43h6l-1 10h-6z" fill="#ffdcb0" opacity="0.32"/>
+  <path d="M28 24h5l-1 7h-5z" fill="#ffdcb0" opacity="0.32"/>
+  <path d="M34 19h10l2-2H36z" fill="#6b3517" opacity="0.32"/>
+</svg>

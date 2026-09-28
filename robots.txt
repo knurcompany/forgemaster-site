@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Замінити на справжній домен, коли сайт стане на місце:
+# Sitemap: https://example.com/sitemap.xml
