@@ -348,7 +348,7 @@ li { list-style: none; }
 .phone-screen img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Поки скріншота немає — місце не порожнє й не поламане.
