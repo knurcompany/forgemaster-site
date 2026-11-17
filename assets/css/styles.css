@@ -170,6 +170,35 @@ li { list-style: none; }
   box-shadow: none;
 }
 
+/* Store button: keep white text readable on green in both states. */
+.btn-play {
+  background: #238636;
+  border-color: #3DA451;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px -8px rgba(35, 134, 54, 0.7);
+}
+.btn-play:hover {
+  background: #1D7530;
+  border-color: #52B96A;
+  color: #FFFFFF;
+  filter: none;
+  box-shadow: 0 10px 24px -10px rgba(35, 134, 54, 0.8);
+}
+
+.btn-appstore {
+  background: #1769D2;
+  border-color: #3C8AF0;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px -8px rgba(23, 105, 210, 0.7);
+}
+.btn-appstore:hover {
+  background: #1259B7;
+  border-color: #66A5F5;
+  color: #FFFFFF;
+  filter: none;
+  box-shadow: 0 10px 24px -10px rgba(23, 105, 210, 0.8);
+}
+
 /* ── Шапка ─────────────────────────────────────────────────── */
 
 .site-head {
